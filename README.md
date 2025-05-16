@@ -44,7 +44,7 @@ Make sure CORS and Keycloak client redirect URIs are configured accordingly.
 | Role | Username | Password |
 |------|----------|----------|
 | Admin | `admin` | `admin` |
-| User  | `user`  | `user`  |
+| User  | `user`  | `halil`  |
 
 *These users must be created in your Keycloak instance under the correct realm.*
 

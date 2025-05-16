@@ -1,0 +1,28 @@
+<div class="product-form-container">
+  <h2>{{ productId ? 'Edit' : 'Create' }} Product</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Name</label>
+      <input formControlName="name" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label>Price</label>
+      <input formControlName="price" type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Upload Image</label>
+      <input type="file" (change)="onImageSelected($event)" />
+      <img *ngIf="productForm.value.imageUrl" [src]="productForm.value.imageUrl" class="preview-image" />
+    </div>
+
+    <button type="submit">{{ productId ? 'Update' : 'Create' }}</button>
+  </form>
+</div>

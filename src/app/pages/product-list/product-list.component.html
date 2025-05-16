@@ -1,0 +1,15 @@
+<!-- Loading indicator -->
+<div *ngIf="loading">Loading...</div>
+
+<!-- Product cards grid -->
+<div class="grid" *ngIf="!loading">
+  <app-product-card
+    *ngFor="let product of products"
+    [product]="product"
+    [adminMode]="isAdmin"
+    (edit)="editProduct(product.id!)"
+    (delete)="deleteProduct(product.id!)"
+  >
+  </app-product-card>
+</div>
+

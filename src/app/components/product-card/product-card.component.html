@@ -1,0 +1,32 @@
+<div class="card">
+  <img [src]="product.imageUrl || 'assets/product-images/placeholder.png'" alt="{{ product.name }}" />
+
+  <div class="card-content">
+    <div class="stars">★★★★★</div>
+
+    <h3 [title]="product.name">{{ product.name }}</h3>
+    <p>{{ shortDescription }}</p>
+    <strong>{{ product.price.toFixed(2) }} CHF</strong>
+
+    <div class="actions">
+      <select [(ngModel)]="size">
+        <option value="" disabled selected>Select size</option>
+        <option *ngFor="let s of sizes" [value]="s">{{ s }}</option>
+      </select>
+
+      <input
+      type="number"
+      [(ngModel)]="quantity"
+      min="1"
+      (input)="preventNegative()"
+    />
+      <button class="cart-btn" (click)="onAddToCart()">🛒</button>
+    </div>
+
+    <!-- Show only for admin -->
+    <div class="buttons" *ngIf="adminMode">
+      <button (click)="onEdit()">Edit</button>
+      <button (click)="onDelete()">Delete</button>
+    </div>
+  </div>
+</div>

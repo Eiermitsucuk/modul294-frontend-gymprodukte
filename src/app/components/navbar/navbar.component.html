@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a routerLink="/" class="logo">GymShop</a>
+    <a routerLink="/products">Products</a>
+    <a *ngIf="keycloak.isAdmin()" routerLink="/products/create">Create Product</a>
+  </div>
+
+  <div class="navbar-right">
+    <button (click)="logout()">Logout</button>
+  </div>
+</nav>

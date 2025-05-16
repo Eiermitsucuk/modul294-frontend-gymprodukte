@@ -1,0 +1,23 @@
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Welcome to GymZone</h1>
+  <p>Your source for affordable, high-quality gym gear.</p>
+  <button (click)="goToProducts()">Browse All Products</button>
+</section>
+
+<!-- Loading state -->
+<p *ngIf="!response" class="loading">Loading...</p>
+
+<!-- Featured Products Section -->
+<section class="featured" *ngIf="response && response.length">
+  <h2>Best Sellers</h2>
+  <div class="grid">
+    <app-product-card
+      *ngFor="let product of response | slice:0:4"
+      [product]="product">
+    </app-product-card>
+  </div>
+</section>
+
+<!-- No products fallback -->
+<p *ngIf="response && !response.length">No products found.</p>

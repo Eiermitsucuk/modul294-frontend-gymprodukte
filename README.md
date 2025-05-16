@@ -1,59 +1,67 @@
-# Modul295Frontend
+# Modul294 Projektarbeit – Gym-Produkte Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+This Angular project is part of the Modul 294 Kompetenznachweis. It provides a modern web frontend for managing and browsing gym-related products, including admin-only features for product management and image handling.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✅ Project Info
+
+- 🔧 **Framework**: Angular 17+ (Standalone Components + SCSS)
+- 🔐 **Authentication**: Keycloak (OAuth2, Bearer Token)
+- 🌐 **Backend API**: Spring Boot (from Modul 295 project)
+- 💾 **Database**: PostgreSQL (handled in backend)
+
+---
+
+## 🔑 Keycloak Configuration
+
+| Setting     | Value                     |
+|-------------|---------------------------|
+| Realm Name  | `ILV`                     |
+| Client ID   | `gymprodukteapp`          |
+| Roles       | `ROLE_admin`, `ROLE_user` |
+| Public Access | `/api/public/products`  |
+| Admin Access | `/api/admin/products`   |
+
+You must create these roles in the Keycloak realm and assign them to test users accordingly. Admin-only functionality is guarded both in routes and the UI.
+
+---
+
+## ⚙️ Configuration (for running)
+
+| Component         | Port |
+|------------------|------|
+| Angular frontend | `4200` |
+| Spring Boot backend | `8081` |
+| Keycloak server  | `8080` |
+
+Make sure CORS and Keycloak client redirect URIs are configured accordingly.
+
+---
+
+## 🧪 Test Accounts
+
+| Role | Username | Password |
+|------|----------|----------|
+| Admin | `admin` | `admin` |
+| User  | `user`  | `user`  |
+
+*These users must be created in your Keycloak instance under the correct realm.*
+
+---
+
+## 🖼️ Image Handling
+
+- Admins can upload images (base64 previewed)
+- Images are saved in the database (`imageUrl` field)
+- Public users can view these images without authentication via public API
+
+---
+
+## 🚀 Development
+
+Start local dev server:
 
 ```bash
+npm install
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
